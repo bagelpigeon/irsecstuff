@@ -1,0 +1,15 @@
+//credit to ITBros
+
+$NewPass = "newpasshere"
+
+$localusers = Get-WmiObject -Class Win32_UserAccount -ComputerName $env:COMPUTERNAME -Filter LocalAccount='true' | select -ExpandProperty name
+
+foreach ($user in $localusers)
+
+{
+
+$user
+
+([adsi]"WinNT://$env:COMPUTERNAME/$user").SetPassword("$NewPass ")
+
+}

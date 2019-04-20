@@ -6,6 +6,10 @@ New-NetFirewallRule -DisplayName "rpc block" -LocalPort 593 -Action Block
 
 New-NetFirewallRule -DisplayName "rdp block" -LocalPort 3389 -Action Block
 
+New-NetFirewallRule -DisplayName "mssql" -Action Allow -Program "C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\Binn\Sqlservr.exe" -Direction Outbound
+
+New-NetFirewallRule -DisplayName "mssql2" -Action Allow -Program "C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\Binn\Sqlservr.exe" -Direction Inbound
+
 Disable-WindowsOptionalFeature -Online -FeatureName smb1protocol
 
 New-NetFirewallRule -DisplayName "Calc.exe block" -Action Block -Program "%SystemRoot%\Syswow64\calc.exe"
